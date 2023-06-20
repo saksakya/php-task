@@ -9,12 +9,13 @@
         <li>ID:{{$student->id}}</li>
         <li>生徒番号:{{$student->sNumber}}</li>
         <li>名前:{{$student->name}}</li>
+        <li>E-mail:{{$student->email}}</li>
+        <li>TwitterID:{{$student->twitter}}</li>
+        <li>その他:{{$student->other}}</li>
         <li>所属:
-            <ul>
                 @foreach ($student->departments as $department)
-                    <li>{{$department->name}}</li>
+                    {{$department->name}}
                 @endforeach
-            </ul>
         </li>
     </ul>
     <a href="{{route('student.index')}}">戻る</a>

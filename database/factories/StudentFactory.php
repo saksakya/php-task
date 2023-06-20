@@ -19,6 +19,10 @@ class StudentFactory extends Factory
         return [
             'sNumber'=>fake()->unique()->numberBetween(1,1000),
             'name' => fake()->name(),
+            'email'=> fake()->unique()->safeEmail(),
+            'twitter'=>fake()->unique()->word(),
+            'other'=>fake()->realText(50),
+
         ];
     }
 }

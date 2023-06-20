@@ -33,4 +33,8 @@ Route::prefix('admin/students')
             ->whereNumber('student')->name('show');
         Route::get('create','create')->name('create');
         Route::post('','store')->name('store');
+        Route::get('{student}/edit','edit')
+            ->whereNumber('student')->name('edit');
+        Route::put('{student}','update')
+            ->whereNumber('student')->name('update');
     });

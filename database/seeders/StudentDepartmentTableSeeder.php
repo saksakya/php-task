@@ -19,7 +19,7 @@ class StudentDepartmentTableSeeder extends Seeder
 
         foreach($students as $student){
             $departmentIds = $departments
-                ->random(1)     //1件所属をランダムに抽出
+                ->random(2)     //1件所属をランダムに抽出
                 ->pluck('id')   //所属モデルからIDのみを抽出
                 ->all();
 

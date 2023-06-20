@@ -13,10 +13,14 @@ return [
     'numeric' => ':attribute は数値で入力してください。',
     'required' => ':attribute は必須入力です',
     'unique' => ':attribute は既に登録されています。',
+    'email'=> ':attribute は有効なアドレスを入力してください。',
 
     // キー名も日本語に変更
     'attributes' => [
         'sNumber' => '生徒番号',
         'name' => '名前',
+        'email' => 'メールアドレス',
+        'twitter' => 'twitterID',
+        'other' => 'その他'
     ],
 ];

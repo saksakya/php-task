@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('sNumber',10);
             $table->string('name',50);
+            $table->string('email',100)->nullable()->unique();
+            $table->string('twitter',50)->nullable()->unique();
+            $table->string('other',500)->nullable();
             $table->timestamps();
         });
     }
