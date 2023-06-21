@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Adimin\StudentController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('admin/students',[StudentController::class,'index'])
-//     ->name('student.index');
-// Route::get('admin/students/{id}',[StudentController::class,'show'])
-//     ->whereNumber('id')
-//     ->name('student.show');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+
 
 Route::prefix('admin/students')
+
     ->name('student.')
     ->controller(StudentController::class)
     ->group(function(){
@@ -37,4 +48,6 @@ Route::prefix('admin/students')
             ->whereNumber('student')->name('edit');
         Route::put('{student}','update')
             ->whereNumber('student')->name('update');
+        Route::delete('{student}','destroy')
+            ->whereNumber('student')->name('destroy');
     });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Adimin\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('students')
+    ->name('api.student.')
+    ->controller(StudentController::class)
+    ->group(function(){
+        Route::get('','indexAPI')->name('index');
+        Route::get('{student}','showAPI')->name('show');
+    });
+

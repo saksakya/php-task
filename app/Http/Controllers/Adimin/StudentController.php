@@ -7,6 +7,7 @@ use App\Http\Requests\StudentPostRequest;
 use App\Http\Requests\StudentPutRequest;
 use App\Models\Department;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,8 @@ class StudentController extends Controller
     public function index():Response
     {
         //生徒一覧を取得
-        $students = Student::all();
+        //$students = Student::all();
+        $students = Student::paginate(20);
 
         //生徒一覧をレスポンスとして返す
         return response()
@@ -88,6 +90,27 @@ class StudentController extends Controller
         $student->update();
         return redirect(route('student.index'))
             ->with('message',$student->sNumber.'を更新しました。');
+    }
+
+    public function destroy(Student $student):RedirectResponse{
+
+    $student->delete();
+
+    return redirect(route('student.index'))
+        ->with('message',$student->sNumber.'を削除しました。');
+    }
+
+    public function indexAPI():Collection
+    {
+        $students = Student::all();
+
+        return $students;
+    }
+
+    public function showAPI(Student $student):Student
+    {
+
+        return $student;
     }
 
 }

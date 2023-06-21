@@ -1,4 +1,4 @@
-<x-layouts.student-manager>
+<x-layouts.student-detail-manager>
     <x-slot:title>
         生徒詳細
     </x-slot:title>
@@ -19,4 +19,4 @@
         </li>
     </ul>
     <a href="{{route('student.index')}}">戻る</a>
-</x-layouts.student-manager>
+</x-layouts.student-detail-manager>
