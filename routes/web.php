@@ -37,6 +37,7 @@ require __DIR__.'/auth.php';
 Route::prefix('admin/students')
 
     ->name('student.')
+    ->middleware('auth')
     ->controller(StudentController::class)
     ->group(function(){
         Route::get('','index')->name('index');

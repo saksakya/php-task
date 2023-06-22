@@ -1,5 +1,4 @@
-# ここにタイトルを入れる
-PHP1
+# PHP1
 ## 紹介と使い方
 
   - Laravelの基本的な機能を一通り盛り込んでみました。
@@ -16,3 +15,11 @@ PHP1
   - 環境構築がよく分からず、Docker Desktopの導入に手間取りました。
   - PHPに触れたことがなかったので、MVCモデルを理解するのに少し時間がかかりました。
   - Microsoft Accessを少しだけ使ったことがあったので、SQLの理解ができて助かりました。
+
+## Memo
+  - Docker Desktop起動
+  - alias設定: alias sail="./vendor/bin/sail"
+  - 起動：sail up -d
+  - http://localhost/
+## Command
+  - データベースリセット:sail artisan migrate:fresh --seed
